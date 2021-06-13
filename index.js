@@ -31,12 +31,86 @@ inquirer
             message:'What is the team managers office number',
             name:'managerofficenumber',
         },
+       
+   ])
 
-        {
-            type:'list',
-            message:'Which type of team member would you like to add',
-            name:'license',
-            choices: ['Engineer', 'Intern'],
-        },
+    .then((data) =>{
+        askQuestion();
+        function askQuestion(){
+            console.log("in hereeee");
+            inquirer.prompt([{type: 'list',name: 'typemember', message: "What type of team member would you like to add",choices:['Engineer', 'Intern']}]).then((response) => {
+                if(response.typemember === "Engineer"){
+                    askEngineer();
+                }
+                else if(response.typemember === "Intern"){
+                    askIntern();
+                }               
+            })
+        } 
 
-    ])
+        
+        let askEngineer = () =>{
+            inquirer
+                .prompt([
+                    {
+                        type:'input',
+                        message:'What is an engineers name?',
+                        name:' engineername',
+                    },
+                    {
+                        type:'input',
+                        message:'What is the engineers id?',
+                        name:'engineerid',
+                    },
+                    {
+                        type:'input',
+                        message:'Whas is engineers email',
+                        name:'engineeremail',
+                    },
+
+                    {
+                        type:'input',
+                        message:'Whas is you engineers github username',
+                        name:'engineereusername',
+                    },
+            
+                ])
+
+                .then((data) =>{
+                    askQuestion();
+                })
+        }
+
+        let askIntern = () =>{
+            inquirer
+            .prompt([
+                {
+                    type:'input',
+                    message:'What is an interns name?',
+                    name:'internname',
+                },
+                {
+                    type:'input',
+                    message:'What is the interns id?',
+                    name:'internid',
+                },
+                {
+                    type:'input',
+                    message:'Whas is interns email',
+                    name:'internemail',
+                },
+
+                {
+                    type:'input',
+                    message:'Whas is your interns school',
+                    name:'internschool',
+                },
+        
+            ])
+
+            .then((data) =>{
+                askQuestion();
+            })
+        }
+
+    })
