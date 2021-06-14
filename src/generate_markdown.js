@@ -1,9 +1,21 @@
 function generateArrayElements (array) {
     let returnString  = '';
-
     array.forEach(element => {
-        returnString += `<li> ${element.getName()} </li>
-        `
+        returnString += `<p> ${element["name"]} </p>`
+        returnString += `<p> ${element["id"]} </p>`
+        returnString += `<p> ${element["email"]} </p>`
+        if(element['officeNumber'] !== null){
+            returnString += `<p> ${element["officeNumber"]} </p>`
+        }
+        else if(element['github'] !== null){
+            console.log("in thiissss43475");
+            returnString += `<p> ${element["github"]} </p>`
+        }
+        else if(element['school'] !== null){
+            console.log("in thiissss3455676");
+            returnString += `<p> ${element["school"]} </p>`
+        }
+        
     });
 
     return returnString;
@@ -21,9 +33,9 @@ function generateHTML(data){
     <body>
        
 
-        <ul>
+        <div>
             ${generateArrayElements(data)}
-        </ul>
+        </div>
       
         
     </body>
