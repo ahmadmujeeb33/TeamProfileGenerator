@@ -14,41 +14,48 @@ inquirer
         {
             type:'input',
             message:'What is the team managers name?',
-            name:'managername',
+            name:'name',
         },
         {
             type:'input',
             message:'What is the team managers id?',
-            name:'managerid',
+            name:'id',
         },
         {
             type:'input',
             message:'Whas is team managers email',
-            name:'manageremail',
+            name:'email',
         },
 
         
         {
             type:'input',
             message:'What is the team managers office number',
-            name:'managerofficenumber',
+            name:'officenumber',
         },
 
        
    ])
 
     .then((data) =>{
-        const manager =  new getmanagerInfo.Manager(data.managername,data.managerid,data.manageremail,data.managerofficenumber);
+        const manager =  new getmanagerInfo.Manager(data.name,data.id,data.email,data.officenumber);
         allData.push(manager);
         askQuestion();
         function askQuestion(){
             console.log("in hereeee");
-            inquirer.prompt([{type: 'list',name: 'typemember', message: "What type of team member would you like to add",choices:['Engineer', 'Intern']}]).then((response) => {
+            inquirer.prompt([{type: 'list',name: 'typemember', message: "What type of team member would you like to add",choices:['Engineer', 'Intern',"finish building team"]}]).then((response) => {
                 if(response.typemember === "Engineer"){
                     askEngineer();
                 }
                 else if(response.typemember === "Intern"){
                     askIntern();
+                }
+                else{
+                    let fullData = markdown.generateHTML(allData);
+                    fs.writeFile('index.html', fullData, function (err) {
+                        if (err) throw err;
+                        console.log('Saved!');
+                      });
                 }               
             })
         } 
@@ -60,29 +67,29 @@ inquirer
                     {
                         type:'input',
                         message:'What is an engineers name?',
-                        name:'engineername',
+                        name:'name',
                     },
                     {
                         type:'input',
                         message:'What is the engineers id?',
-                        name:'engineerid',
+                        name:'id',
                     },
                     {
                         type:'input',
                         message:'Whas is engineers email',
-                        name:'engineeremail',
+                        name:'email',
                     },
 
                     {
                         type:'input',
                         message:'Whas is you engineers github username',
-                        name:'engineereusername',
+                        name:'username',
                     },
             
                 ])
 
                 .then((data) =>{
-                    const engineer =  new getEngineerInfo.Engineer(data.engineername,data.engineerid,data.engineeremail,data.engineereusername);
+                    const engineer =  new getEngineerInfo.Engineer(data.name,data.id,data.email,data.username);
                     allData.push(engineer);
                     askQuestion();
                 })
@@ -94,29 +101,29 @@ inquirer
                 {
                     type:'input',
                     message:'What is an interns name?',
-                    name:'internname',
+                    name:'name',
                 },
                 {
                     type:'input',
                     message:'What is the interns id?',
-                    name:'internid',
+                    name:'id',
                 },
                 {
                     type:'input',
                     message:'Whas is interns email',
-                    name:'internemail',
+                    name:'email',
                 },
 
                 {
                     type:'input',
                     message:'Whas is your interns school',
-                    name:'internschool',
+                    name:'school',
                 },
         
             ])
 
             .then((data) =>{
-                const intern =  new getInternInfo.Intern(data.internname,data.internid,data.internemail,data.internschool);
+                const intern =  new getInternInfo.Intern(data.name,data.id,data.email,data.school);
                 allData.push(intern);
                 askQuestion();
             })
