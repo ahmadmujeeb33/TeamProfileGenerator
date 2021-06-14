@@ -51,7 +51,9 @@ inquirer
                     askIntern();
                 }
                 else{
-                    let fullData = markdown.generateHTML(allData);
+                    console.log("rtiljdf");
+                    console.log(allData);
+                    let fullData = template.generateHTML(allData);
                     fs.writeFile('index.html', fullData, function (err) {
                         if (err) throw err;
                         console.log('Saved!');
