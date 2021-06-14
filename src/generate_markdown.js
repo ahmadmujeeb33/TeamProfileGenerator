@@ -1,6 +1,15 @@
+function generateArrayElements (array) {
+    let returnString  = '';
 
+    array.forEach(element => {
+        returnString += `<li> ${element.getName()} </li>
+        `
+    });
 
-function generateHTML(response){
+    return returnString;
+}
+
+function generateHTML(data){
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -10,11 +19,10 @@ function generateHTML(response){
         <title>Document</title>
     </head>
     <body>
-        <p>my name is ${response.name}</p>
-        <p>my name is ${response.location}</p>
+       
 
         <ul>
-            ${generateArrayElements(response.myArray)}
+            ${generateArrayElements(data)}
         </ul>
       
         
