@@ -7,8 +7,6 @@ const getInternInfo = require('./lib/Intern');
 let allData = [];
 
 
-
-
 inquirer
     .prompt([
         {
