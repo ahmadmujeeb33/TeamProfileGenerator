@@ -1,23 +1,35 @@
 function generateArrayElements (array) {
     console.log(array);
+    let otherVal;
     let returnString  = '';
     array.forEach(element => {
-        returnString += `<p> ${element["name"]} </p>`
-        returnString += `<p> ${element["id"]} </p>`
-        returnString += `<p> ${element["email"]} </p>`
         if(element['officeNumber'] != null){
-            returnString += `<p> ${element["officeNumber"]} </p>`
+            otherVal=  element["officeNumber"]
         }
         else if(element['github'] != null){
-            console.log("in thiissss43475");
-            returnString += `<p> ${element["github"]} </p>`
+            otherVal= element["github"]
         }
         else if(element['school'] != null){
-            console.log("in thiissss3455676");
-            returnString += `<p> ${element["school"]} </p>`
+            otherVal= element["school"]
+
         }
+
+        returnString += `<div class="card employee-card">
+            <div class="card-header" style = "background-color:blue;color:white;">
+                <h2 class="card-title">${element["name"]}</h2>
+                <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${element.getRole()}</h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">${element["id"]}</li>
+                    <li class="list-group-item">${element["email"]}</li>
+                    <li class="list-group-item">Office number: ${otherVal}</li>
+                </ul>
+            </div>
+        </div>`
         
     });
+   
 
     return returnString;
 }
@@ -32,24 +44,19 @@ function generateHTML(data){
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
         <title>Document</title>
         <style>
-
+            .format{
+                display:flex;
+            }
         </style>
     </head>
     <body>
        
 
-        <div>
+        <div class="format">
             ${generateArrayElements(data)}
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
-                </div>
         </div>
+            
+       
       
         
     </body>
