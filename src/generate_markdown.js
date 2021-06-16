@@ -39,7 +39,7 @@ function generateArrayElements(array) {
 
 function SpecialChracteristics(type,otherVal){
     if(type === 'officeNumber' || type === 'school'){
-        return `<li class="list-group-item">Office number:${type}:  ${otherVal}</li>`
+        return `<li class="list-group-item"> ${type}:  ${otherVal}</li>`
     }
     return `<li class="list-group-item">Email:<a target="_blank" href="https://github.com/"${otherVal}">${otherVal}</a></li>`
 }
