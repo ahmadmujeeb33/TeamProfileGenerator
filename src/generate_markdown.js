@@ -26,7 +26,7 @@ function generateArrayElements(array) {
                 <ul class="list-group">
                     <li class="list-group-item">Id:${element["id"]}</li>
                     <li class="list-group-item">Email:<a href="mailto:${element["email"]}">${element["email"]}</a></li>
-                    <li class="list-group-item">Office number:${type}:  ${otherVal}</li>
+                    ${SpecialChracteristics(type,otherVal)}
                 </ul>
             </div>
         </div>`
@@ -35,6 +35,13 @@ function generateArrayElements(array) {
    
 
     return returnString;
+}
+
+function SpecialChracteristics(type,otherVal){
+    if(type === 'officeNumber' || type === 'school'){
+        return `<li class="list-group-item">Office number:${type}:  ${otherVal}</li>`
+    }
+    return `<li class="list-group-item">Email:<a target="_blank" href="https://github.com/"${otherVal}">${otherVal}</a></li>`
 }
 
 function generateHTML(data){
