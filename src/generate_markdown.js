@@ -1,16 +1,19 @@
-function generateArrayElements (array) {
-    console.log(array);
+function generateArrayElements(array) {
     let otherVal;
     let returnString  = '';
+    let type;
     array.forEach(element => {
         if(element['officeNumber'] != null){
-            otherVal=  element["officeNumber"]
+            otherVal=  element["officeNumber"];
+            type = "officeNumber";
         }
         else if(element['github'] != null){
             otherVal= element["github"]
+            type = "github";
         }
         else if(element['school'] != null){
             otherVal= element["school"]
+            type = "school"
 
         }
 
@@ -21,9 +24,9 @@ function generateArrayElements (array) {
             </div>
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item">${element["id"]}</li>
-                    <li class="list-group-item">${element["email"]}</li>
-                    <li class="list-group-item">Office number: ${otherVal}</li>
+                    <li class="list-group-item">Id:${element["id"]}</li>
+                    <li class="list-group-item">Email:<a href="mailto:${element["email"]}">${element["email"]}</a></li>
+                    <li class="list-group-item">Office number:${type}:  ${otherVal}</li>
                 </ul>
             </div>
         </div>`
@@ -46,6 +49,9 @@ function generateHTML(data){
         <style>
             .format{
                 display:flex;
+                justify-content:center;
+                align-items:center;
+                gap:10px;
             }
         </style>
     </head>
