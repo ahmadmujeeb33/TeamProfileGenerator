@@ -41,7 +41,7 @@ function SpecialChracteristics(type,otherVal){
     if(type === 'officeNumber' || type === 'school'){
         return `<li class="list-group-item"> ${type}:  ${otherVal}</li>`
     }
-    return `<li class="list-group-item">Email:<a target="_blank" href="https://github.com/"${otherVal}">${otherVal}</a></li>`
+    return `<li class="list-group-item">${type}: <a target="_blank" href=" https://github.com/"${otherVal}">${otherVal}</a></li>`
 }
 
 function generateHTML(data){
